@@ -1,0 +1,555 @@
+/**
+ * CSS rules for the browse artefact plugin
+ *
+ * Copyright Mike Kelly UAL m.f.kelly@arts.ac.uk / Catalyst IT
+ * This file is distributed under the same terms as Mahara itself
+ */
+#gallery {
+  float: left;
+  background: transparent;
+  overflow: hidden;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-top: 15px;
+}
+
+#gallery .profiles {
+  margin-bottom: 20px;
+}
+
+#gallery .gall-cell {
+  -webkit-box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.4);
+  -moz-box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.4);
+  box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.4);
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 154px;
+  overflow: hidden;
+  vertical-align: top;
+  margin: 0 15px 40px 15px;
+  *display: inline;
+  zoom: 1;
+}
+
+#gallery a.gall-cell {
+  height: 120px;
+  margin: 0;
+}
+
+#gallery .gall-cell .gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#gallery .gall-cell, #gallery .gall-cell * {
+  text-decoration: none;
+  color: #333;
+}
+
+#gallery .gall-cell .pagelink {
+  width: 150px;
+  font: bold 11px Arial,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #F6F6F6;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 10px 25px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  white-space: nowrap;
+  text-align: left;
+  z-index: 10;
+}
+
+#gallery .gall-cell .pagelink:hover, #gallery .gall-cell .imagelink:hover {
+  color: #999;
+}
+
+#gallery .gall-cell .imagelink {
+  color: #333;
+  width: 150px;
+  font: bold 11px Arial,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px 25px;
+  position: absolute;
+  left: 0;
+  bottom: 45px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+#gallery .gall-cell .imagelinkicon {
+  position: absolute;
+  left: 5px;
+  bottom: 54px;
+  z-index: 1;
+  background: url("../../images/pic_icon16.png") no-repeat;
+  width: 16px;
+  height: 16px;
+}
+
+#gallery .gall-cell .pagelinkicon {
+  position: absolute;
+  left: 5px;
+  bottom: 9px;
+  z-index: 1;
+  background: url("../../images/doc_icon16.png") no-repeat;
+  width: 16px;
+  height: 16px;
+  z-index: 11;
+}
+
+#gallery .gall-cell.photo, #gallery .gall-cell.video {
+  background-image: none;
+  background-position: center center;
+}
+
+#gallery .gall-cell.link {
+  background-position: -150px 0;
+}
+
+#gallery .gall-cell .gall-span {
+  color: #333;
+  width: 150px;
+  height: 145px;
+  font: 11px Arial,Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #efefef;
+  padding: 10px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  text-align: left;
+  z-index: 9;
+}
+
+#gallery .gall-cell .gall-span a {
+  color: #333;
+}
+
+#gallery .gall-cell .title {
+  margin: 0 13px 5px 13px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 17px;
+}
+
+#gallery .gall-cell .body {
+  margin: 0 13px 10px 13px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+#gallery .gall-cell.link .title {
+  text-decoration: underline;
+}
+
+#gallery .gall-cell .gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#gallery .gall-cell.link .gradient {
+  background-position: -150px -150px;
+}
+
+.ownername {
+  padding-top: 5px;
+  font-weight: bold;
+}
+
+#text_extracts #profileicon {
+  float: left;
+  padding-right: 15px;
+  line-height: 20px;
+  width: 50px;
+}
+
+#text_extracts .quotebody {
+  padding-left: 65px;
+  padding-bottom: 10px;
+}
+
+#text_extracts .quotetitle p {
+  margin: 0;
+}
+
+#text_extracts .quotebody p {
+  margin: 0;
+}
+
+.gall-cell.quote {
+  margin: 5px 0 15px 0;
+  border-bottom: solid 1px #EEE;
+}
+
+#tags {
+  position: relative;
+  background: url("clean/static/images/frontpage/content_divider_horizontal_shadow.png") 0 -18px repeat-x transparent;
+  border-top: 3px solid #eef2f9;
+}
+
+#tags .header {
+  border-bottom: 1px solid #d9d9d9;
+  margin-top: 10px;
+}
+
+#tags .header .cell, #tags .row .cell {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px 0;
+}
+
+#tags .header .cell {
+  text-transform: uppercase;
+  font: bold 10px Arial,Helvetica,sans-serif;
+  color: #9e9e9e;
+  padding: 20px 0 8px 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+#tags .header .cell a {
+  text-decoration: none;
+}
+
+#tags .header .cell.name, #tags .row .cell.name {
+  padding-left: 50px;
+  width: 345px;
+}
+
+#tags .header .cell.name {
+  color: #777;
+}
+
+#tags .row {
+  background: #f0f0f0;
+  border-bottom: 1px solid #d9d9d9;
+  position: relative;
+}
+
+#tags .row:nth-child(odd) {
+  background: #f6f6f6;
+}
+
+#tags .row .cell {
+  white-space: nowrap;
+}
+
+#tags .row .cell.name, #tags .row .cell.name a {
+  font: bold 16px Arial,Helvetica,sans-serif;
+  text-decoration: none;
+  color: #4b4b4b;
+  margin-top: 2px;
+}
+
+#tags .row .cell.name a {
+  border-bottom: 1px solid #cdcdcd;
+}
+
+#tags .row .cell.dark {
+  background-color: #eeeeee !important;
+}
+
+#tags .row:nth-child(even) .cell.dark {
+  background-color: #e8e8e8 !important;
+}
+
+#tags .gradient {
+  position: absolute;
+  width: 45px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#tags .gradient.right {
+  left: auto;
+  right: 0;
+  background-position: top left;
+}
+
+#messages-and-text {
+  margin: 0 10px;
+}
+
+#browse-options ul li a {
+  text-decoration: none;
+  color: #193441;
+}
+
+.codesc {
+  font-size: .9167em;
+}
+
+#browselist_pagination.pagination {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/** Filters **/
+div {
+  display: block;
+}
+
+#browse-container {
+  border-bottom: 1px solid #DDD;
+}
+
+#browsewrap {
+  border: 1px solid #DDD;
+  border-top: none;
+}
+
+.chzn-container {
+  min-width: 100px;
+}
+
+#filter-keyword-container {
+  margin: 6px 0;
+}
+
+#filter-sharetype-container, #filter-college-container, #filter-course-activate-container {
+  margin-right: 4px;
+}
+
+#filter-course-activate-container {
+  z-index: 10;
+}
+
+#filter-course-container {
+  position: absolute;
+  right: 10px;
+  width: 300px;
+  display: none;
+  margin-top: -2px;
+  z-index: 9;
+}
+
+#active-filters-container {
+  clear: both;
+  position: relative;
+  display: none;
+}
+
+#filter-tabs {
+  position: relative;
+  margin-top: 4px;
+}
+
+#filter-course-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-clip: padding-box;
+  color: #444444;
+  float: right;
+  padding: 11px;
+  border: 1px solid #AAA;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+  background: #FFF;
+}
+
+#filter-title label {
+  padding: 1px;
+}
+
+#select-filters {
+  padding: 7px 0 7px 12px;
+  text-align: left;
+}
+
+#filter-keyword-container label, #filter-course-wrapper label {
+  float: left;
+  margin: 2px 0;
+  color: #555;
+  padding-right: 8px;
+}
+
+#filter-keyword-container select {
+  float: left;
+  margin-right: 4px;
+}
+
+#filter .select, #filter .text {
+  float: left;
+  color: #444;
+}
+
+#query-button-keyword, #query-button-course {
+  margin-left: 6px;
+  padding: 2px 8px;
+}
+
+.chzn-select {
+  min-width: 100px;
+}
+
+#course-filter .select, #course-filter .text {
+  float: left;
+  color: #444;
+}
+
+#filter-course-activate label {
+  color: #999;
+}
+
+#ui-active-menuitem {
+  cursor: pointer;
+  display: list-item;
+  background-color: #3875d7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3875d7', endColorstr='#2a62bc', GradientType=0 );
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(20%, #3875d7), color-stop(90%, #2a62bc));
+  background-image: -webkit-linear-gradient(top, #3875d7 20%, #2a62bc 90%);
+  background-image: -moz-linear-gradient(top, #3875d7 20%, #2a62bc 90%);
+  background-image: -o-linear-gradient(top, #3875d7 20%, #2a62bc 90%);
+  background-image: linear-gradient(#3875d7 20%, #2a62bc 90%);
+  color: #fff;
+}
+
+/* active filters */
+#active-filters {
+  padding: 10px 10px 0 10px;
+  display: block;
+  border-bottom: 1px solid #DDD;
+}
+
+.filter-entry-wrapper, .remove-all-wrapper {
+  background-clip: padding-box;
+  background-color: #FFF;
+  background-image: linear-gradient(white 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 50%);
+  border: 1px solid #AAAAAA;
+  border-radius: 3px;
+  box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+  color: #444444;
+  display: block;
+  height: 23px;
+  line-height: 24px;
+  overflow: hidden;
+  padding: 0 0 0 8px;
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+  margin: 0 10px 10px 0;
+}
+
+#remove-all-wrapper {
+  margin-right: 0;
+}
+
+.filter-entry {
+  float: left;
+}
+
+.remove-filter-entry {
+  display: inline-block;
+  margin: 4px 4px;
+  border: 0;
+}
+
+#remove-all-button {
+  float: right;
+}
+
+#remove-all-filter-entries {
+  float: right;
+  font-weight: bold;
+}
+
+.remove-filter-button {
+  border: 0 solid #fff;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+
+* html .remove-filter-button {
+  font-size: 0;
+  display: block;
+  line-height: 0;
+}
+
+* + html .remove-filter-button {
+  font-size: 0;
+  display: block;
+  line-height: 0;
+}
+
+/* #Clearing
+================================================== */
+/* Self Clearing Goodness */
+.container:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Use clearfix class on parent to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.row:after,
+.clearfix:after {
+  clear: both;
+}
+
+.row,
+.clearfix {
+  zoom: 1;
+}
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+  /*fullscreen skillshare links*/
+  .viewmore {
+    display: none;
+  }
+}
+@media screen and (max-width: 660px) {
+  #filter-keyword-container {
+    display: none;
+  }
+}
