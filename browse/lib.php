@@ -115,18 +115,25 @@ class ArtefactTypeBrowse extends ArtefactType {
             );
             return $items;
         }
-
-        $selectclause =     'SELECT va.view, a.id, v.mtime, v.title, v.owner';
-        $fromclause =       ' FROM {view_access} va';
-        $joinclause =       " INNER JOIN {view} v ON (va.view = v.id AND v.id IN ($poolids) AND v.type != 'profile')";
-        $join2clause =      " JOIN {view_artefact} var ON v.id = var.view";
+        if (is_postgres()) {
+            $selectclause =  'SELECT *
+                              FROM (
+                                    SELECT DISTINCT ON (v.owner) a.id, v.id AS view, v.mtime, v.title, v.owner';
+            $grouporderclause = ') p
+                                ORDER BY mtime DESC';
+        }
+        else if (is_mysql()) {
+            $selectclause =  'SELECT a.id, v.id AS view, v.mtime, v.title, v.owner';
+            $grouporderclause = 'GROUP BY v.owner
+                                 ORDER BY a.mtime DESC';
+        }
+        $fromclause =       ' FROM {view} v';
+        $joinclause =       " INNER JOIN {view_artefact} var ON (v.id = var.view AND v.id IN ($poolids) AND v.type != 'profile')";
+        $join2clause =      '';
         $join3clause =      " JOIN {artefact} a ON (a.artefacttype = 'image' AND a.id = var.artefact)";
         $join4clause =      '';
         $whereclause =      ' WHERE (v.owner > 0)';
-        $andclause =        " AND (v.startdate IS NULL OR v.startdate < current_timestamp)
-                            AND (v.stopdate IS NULL OR v.stopdate > current_timestamp)
-                            AND (va.startdate IS NULL OR va.startdate < current_timestamp)
-                            AND (va.stopdate IS NULL OR va.stopdate > current_timestamp)";
+        $andclause =        '';
 
         foreach ($filters as $filterkey => $filterval) {
 
@@ -138,7 +145,7 @@ class ArtefactTypeBrowse extends ArtefactType {
                     $filterval = str_replace(' ', ',', $filterval);
                     $keywords = explode(",", $filterval);
 
-                    if ($keywordtype == "user") {
+                    if ($keywordtype == 'user') {
                         $join4clause = ' LEFT JOIN {usr} u ON u.id = v.owner';
                         if (count($keywords) == 1 ) {
                             $andclause .= " AND (
@@ -191,7 +198,7 @@ class ArtefactTypeBrowse extends ArtefactType {
                         // To capture multiple tags, we use OR between terms
                         // This leads to slightly different behaviour compared to other search types
                         // but it's a reasonable compromise. No really.
-                        $join4clause = ' LEFT OUTER JOIN {view_tag} vt ON vt.view = va.view';
+                        $join4clause = ' LEFT OUTER JOIN {view_tag} vt ON vt.view = v.id';
                         if (count($keywords) == 1 ) {
                             $andclause .= " AND (
                             LOWER(vt.tag) LIKE LOWER('%$filterval%')
@@ -293,8 +300,6 @@ class ArtefactTypeBrowse extends ArtefactType {
 
         /**
          * The query checks for single images.
-         * The GROUP BY condition limits the output to 1 image per user
-         * Exclude support group
          */
         $publicimagesids = get_records_sql_array("
                     $selectclause
@@ -305,8 +310,7 @@ class ArtefactTypeBrowse extends ArtefactType {
                     $join4clause
                     $whereclause
                     $andclause
-                    GROUP BY v.owner
-                    ORDER BY a.mtime DESC
+                    $grouporderclause
                     ", array(), $offset, $limit);
 
         // build each post
@@ -353,7 +357,7 @@ class ArtefactTypeBrowse extends ArtefactType {
                 $join4clause
                 $whereclause
                 $andclause
-                GROUP BY v.owner
+                $grouporderclause
                 ", array(), 0, null);
 
         $items = array(
